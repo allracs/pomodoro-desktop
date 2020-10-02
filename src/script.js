@@ -1,9 +1,9 @@
 let status = false,
-    interval;
-let min = 25,
-    sec = 00,
-    def_min = 25,
-    def_sec = 00;
+    interval,
+    def_min = 00,
+    def_sec = 10,
+    min = def_min,
+    sec = def_sec;
 
 let min_span = document.getElementById("min"),
     sec_span = document.getElementById("sec"),
@@ -32,14 +32,15 @@ const play = () => {
         } else {
             sec--;
         }
-        console.log(min, ":", sec);
+        if (sec == 0 && min == 0) {
+            pause();
+        }
         draw();
     }, 1000);
 };
 
 const pause = () => {
     play_but.innerHTML = "▶";
-    console.log("PAUSE");
     status = false;
     clearInterval(interval);
 };
@@ -54,8 +55,10 @@ const reset = () => {
 const draw = () => {
     let m = "",
         s = "";
-    if (min.toString().length == 1) m = '0';
-    if (sec.toString().length == 1) s = '0';
-    min_span.innerHTML = m + min;
+    if (min.toString().length == 1) m = "0";
+    if (sec.toString().length == 1) s = "0";
+    min_span.value = m + min;
     sec_span.innerHTML = s + sec;
 };
+
+draw();
