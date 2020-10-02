@@ -1,7 +1,7 @@
 let status = false,
     interval,
-    def_min = 00,
-    def_sec = 10,
+    def_min = 25,
+    def_sec = 00,
     min = def_min,
     sec = def_sec;
 
