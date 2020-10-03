@@ -1,0 +1,95 @@
+:root {
+    --font-size: 75px;
+}
+
+body {
+    width: 560px;
+    margin: 0;
+    background: rgb(9, 72, 155);
+    border: 10px solid rgb(238, 199, 24);
+    padding: 10px;
+    -webkit-app-region: drag
+}
+
+main input, main button {
+    -webkit-app-region: no-drag;
+}
+
+main input, main span, main img {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+header {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+main,
+main > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main > img {
+    height: 90px;
+    width: 90px;
+}
+
+main span,
+main input {
+    font-size: var(--font-size);
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+main input,
+main button {
+    width: 100px;
+    height: 100px;
+    border: none;
+    background: none;
+}
+
+main button {
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: var(--font-size);
+}
+
+main input:hover,
+main button:hover {
+    background-color: rgb(15, 103, 219);
+    border-radius: 5px;
+}
+
+main input:focus,
+main button:focus {
+    outline: none;
+}
+
+main button img {
+    width: 90px;
+    height: 90px;
+    padding: 5px;
+}

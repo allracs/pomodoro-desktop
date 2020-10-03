@@ -22,8 +22,13 @@ reload_but.addEventListener("click", () => {
     reset();
 });
 
+min_span.addEventListener("change", () => {
+    min = min_span.value;
+    def_min = min_span.value;
+});
+
 const play = () => {
-    play_but.innerHTML = "⏸";
+    play_but.lastChild.src = "../img/pause.png";
     status = true;
     interval = setInterval(() => {
         if (sec == 0) {
@@ -32,7 +37,7 @@ const play = () => {
         } else {
             sec--;
         }
-        if (sec == 0 && min == 0) {
+        if ((sec == 0 && min == 0) || min < 0) {
             pause();
         }
         draw();
@@ -40,7 +45,8 @@ const play = () => {
 };
 
 const pause = () => {
-    play_but.innerHTML = "▶";
+    play_but.lastChild.src = "../img/play.png";
+    console.log(play_but);
     status = false;
     clearInterval(interval);
 };
