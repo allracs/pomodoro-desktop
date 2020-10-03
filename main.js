@@ -11,13 +11,15 @@ function createWindow() {
         frame: false,
         transparent: true,
         icon: __dirname + "./img/tomato.png",
+        fullscreenable: false,
+        maximizable: false,
     });
 
     // and load the index.html of the app.
     win.loadFile("./src/index.html");
 
     // Open the DevTools.
-    //win.webContents.openDevTools({mode: "detach"})
+    //win.webContents.openDevTools({ mode: "detach" });
 }
 
 // This method will be called when Electron has finished

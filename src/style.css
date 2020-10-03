@@ -8,14 +8,18 @@ body {
     background: rgb(9, 72, 155);
     border: 10px solid rgb(238, 199, 24);
     padding: 10px;
-    -webkit-app-region: drag
+    -webkit-app-region: drag;
 }
 
-main input, main button {
+header span,
+main input,
+main button {
     -webkit-app-region: no-drag;
 }
 
-main input, main span, main img {
+main input,
+main span,
+main img {
     -webkit-user-drag: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -28,6 +32,10 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: right;
+}
+
+header span:hover {
+    background-color: rgb(15, 103, 219);
 }
 
 main,
@@ -47,19 +55,20 @@ main span,
 main input {
     font-size: var(--font-size);
     color: white;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 main input,

@@ -8,7 +8,8 @@ let status = false,
 let min_span = document.getElementById("min"),
     sec_span = document.getElementById("sec"),
     play_but = document.getElementById("play"),
-    reload_but = document.getElementById("reload");
+    reload_but = document.getElementById("reload"),
+    exit_but = document.getElementById("exit");
 
 play_but.addEventListener("click", () => {
     if (!status) {
@@ -25,6 +26,10 @@ reload_but.addEventListener("click", () => {
 min_span.addEventListener("change", () => {
     min = min_span.value;
     def_min = min_span.value;
+});
+
+exit_but.addEventListener("click", () => {
+    window.close();
 });
 
 const play = () => {
