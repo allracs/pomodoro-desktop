@@ -2,15 +2,19 @@
     --font-size: 75px;
 }
 
+html {
+    -webkit-app-region: drag;
+}
+
 body {
     width: 560px;
     margin: 0;
     background: rgb(9, 72, 155);
     border: 10px solid rgb(238, 199, 24);
     padding: 10px;
-    -webkit-app-region: drag;
 }
 
+header img,
 header span,
 main input,
 main button {
@@ -27,14 +31,21 @@ main img {
 
 header {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
     display: flex;
     flex-direction: row;
     justify-content: right;
 }
 
-header span:hover {
+header img {
+    height: 21px;
+    width: 21px;
+    margin-right: 2px;
+}
+
+header span:hover, header img:hover {
+    cursor: pointer;
     background-color: rgb(15, 103, 219);
 }
 
@@ -101,4 +112,8 @@ main button img {
     width: 90px;
     height: 90px;
     padding: 5px;
+}
+
+.transparent:hover {
+    filter: opacity(0.2);
 }

@@ -1,3 +1,5 @@
+const { app, BrowserWindow } = require("electron");
+
 let status = false,
     interval,
     def_min = 25,
@@ -9,7 +11,8 @@ let min_span = document.getElementById("min"),
     sec_span = document.getElementById("sec"),
     play_but = document.getElementById("play"),
     reload_but = document.getElementById("reload"),
-    exit_but = document.getElementById("exit");
+    exit_but = document.getElementById("exit"),
+    eye_img = document.getElementById('eye');
 
 play_but.addEventListener("click", () => {
     if (!status) {
@@ -28,8 +31,20 @@ min_span.addEventListener("change", () => {
     def_min = min_span.value;
 });
 
+min_span.addEventListener('mouseleave', () => {
+    play_but.focus();
+});
+
 exit_but.addEventListener("click", () => {
     window.close();
+});
+
+eye_img.addEventListener("mouseover", () => {
+    document.getElementsByTagName('html')[0].classList.add('transparent');
+});
+
+eye_img.addEventListener("mouseleave", () => {
+    document.getElementsByTagName('html')[0].classList.remove('transparent');
 });
 
 const play = () => {
