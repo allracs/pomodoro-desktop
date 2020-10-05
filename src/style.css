@@ -21,6 +21,7 @@ main button {
     -webkit-app-region: no-drag;
 }
 
+header img,
 main input,
 main span,
 main img {
@@ -114,6 +115,6 @@ main button img {
     padding: 5px;
 }
 
-.transparent:hover {
+.transparent {
     filter: opacity(0.2);
 }
