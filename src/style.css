@@ -8,6 +8,7 @@ html {
 
 body {
     width: 560px;
+    height: 115px;
     margin: 0;
     background: rgb(9, 72, 155);
     border: 10px solid rgb(238, 199, 24);

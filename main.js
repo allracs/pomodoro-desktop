@@ -13,6 +13,7 @@ function createWindow() {
         icon: __dirname + "./img/tomato.png",
         fullscreenable: false,
         maximizable: false,
+        resizable: false,
         alwaysOnTop: true,
     });
 
