@@ -1,9 +1,10 @@
-const { app, BrowserWindow } = require("electron");
-
-let status = false,
+let status_play = false,
+    work = true,
     transparent_pin = false,
     interval,
-    def_min = 25,
+    infinity = false,
+    def_min = 1,
+    def_rest = 0,
     def_sec = 00,
     min = def_min,
     sec = def_sec;
@@ -16,24 +17,11 @@ let min_span = document.getElementById("min"),
     eye_img = document.getElementById("eye");
 
 play_but.addEventListener("click", () => {
-    if (!status) {
-        play();
-    } else {
-        pause();
-    }
+    controllerPlay();
 });
 
 reload_but.addEventListener("click", () => {
     reset();
-});
-
-min_span.addEventListener("change", () => {
-    min = min_span.value;
-    def_min = min_span.value;
-});
-
-min_span.addEventListener("mouseleave", () => {
-    play_but.focus();
 });
 
 exit_but.addEventListener("click", () => {
@@ -61,9 +49,20 @@ eye_img.addEventListener("mouseleave", () => {
     }
 });
 
+const controllerPlay = () => {
+    if (!status_play) {
+        play();
+    } else {
+        pause();
+    }
+}
+
 const play = () => {
     play_but.lastChild.src = "../img/pause.png";
-    status = true;
+    status_play = true;
+    if (min <= 0 && sec == 0) {
+        min = def_min;
+    }
     interval = setInterval(() => {
         if (sec == 0) {
             sec = 59;
@@ -72,7 +71,7 @@ const play = () => {
             sec--;
         }
         if ((sec == 0 && min == 0) || min < 0) {
-            pause();
+            autoPlay();
         }
         draw();
     }, 1000);
@@ -81,12 +80,59 @@ const play = () => {
 const pause = () => {
     play_but.lastChild.src = "../img/play.png";
     console.log(play_but);
-    status = false;
+    status_play = false;
     clearInterval(interval);
 };
 
+const autoPlay = () => {
+    if (infinity) {
+        pause();
+        workOrRest();
+        play();
+    } else {
+        pause();
+    }
+}
+
+const workOrRest = () => {
+    work = !work;
+    if (work) {
+        min = def_min;
+        sec = def_sec;
+        toggleDots();
+    } else {
+        min = def_rest;
+        sec = 10;
+        toggleDots();
+    }
+}
+
+const toggleDots = () => {
+    if (work) {
+        document.getElementById('work_dot').classList.remove('hidden');
+        document.getElementById('rest_dot').classList.add('hidden');
+    } else {
+        document.getElementById('work_dot').classList.add('hidden');
+        document.getElementById('rest_dot').classList.remove('hidden');
+    }
+}
+
+const toggleAuto = () => {
+    console.log('toggleAuto');
+    infinity = !infinity;
+    let elem = document.getElementById('infinity_dot');
+    if (infinity) {
+        console.log(infinity, elem);
+        elem.classList.remove('hidden');
+    } else {
+        elem.classList.add('hidden');
+    }
+}
+
 const reset = () => {
     pause();
+    work = true;
+    toggleDots();
     min = def_min;
     sec = def_sec;
     draw();
@@ -97,7 +143,7 @@ const draw = () => {
         s = "";
     if (min.toString().length == 1) m = "0";
     if (sec.toString().length == 1) s = "0";
-    min_span.value = m + min;
+    min_span.innerHTML = m + min;
     sec_span.innerHTML = s + sec;
 };
 

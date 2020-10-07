@@ -1,5 +1,11 @@
 :root {
     --font-size: 75px;
+    --yellow: #eec718;
+    --background: #09489b;
+    --background-hover: #0f67db;
+    --green-tea: #b8e735;
+    --status-dot: 4px;
+    --infinity: #886ce4;
 }
 
 html {
@@ -7,23 +13,24 @@ html {
 }
 
 body {
-    width: 560px;
+    width: 600px;
     height: 115px;
     margin: 0;
-    background: rgb(9, 72, 155);
-    border: 10px solid rgb(238, 199, 24);
+    background: var(--background);
+    border: 10px solid var(--yellow);
     padding: 10px;
 }
 
 header img,
 header span,
-main input,
+.infinity,
+.status img,
 main button {
     -webkit-app-region: no-drag;
 }
 
 header img,
-main input,
+.status img,
 main span,
 main img {
     -webkit-user-drag: none;
@@ -48,15 +55,70 @@ header img {
 
 header span:hover, header img:hover {
     cursor: pointer;
-    background-color: rgb(15, 103, 219);
+    background-color: var(--background-hover);
 }
 
 main,
-main > div {
+main > div.timer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.status, .status > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.status {
+    margin-left: 8px;
+    flex-direction: column;
+}
+
+.status > div {
+    flex-direction: row;
+}
+
+.status img {
+    width: 25px;
+    height: 25px;
+    margin: 4px;
+}
+
+.working, .resting {
+    width: 8px;
+    height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infinity > div, .working > div, .resting > div {
+    width: 0;
+    height: 0;
+    border: var(--status-dot) solid;
+    border-radius: 100%;
+}
+
+.infinity > div {
+    background: var(--infinity);
+    border-color: var(--infinity);
+}
+
+.working > div {
+    background: var(--yellow);
+    border-color: var(--yellow);
+}
+
+.resting > div {
+    background: var(--green-tea);
+    border-color: var(--green-tea);
+}
+
+.hidden {
+    opacity: 0;
 }
 
 main > img {
@@ -64,27 +126,13 @@ main > img {
     width: 90px;
 }
 
-main span,
-main input {
+main span {
     font-size: var(--font-size);
     color: white;
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
-main input,
 main button {
     width: 100px;
     height: 100px;
@@ -99,13 +147,11 @@ main button {
     font-size: var(--font-size);
 }
 
-main input:hover,
 main button:hover {
     background-color: rgb(15, 103, 219);
     border-radius: 5px;
 }
 
-main input:focus,
 main button:focus {
     outline: none;
 }

@@ -13,8 +13,22 @@
     </header>
     <main>
         <img src="../img/tomato.png" alt="">
-        <div>
-            <input type="number" id="min">
+        <div class="status">
+            <div>
+                <div id="infinity_dot" class="infinity hidden"><div></div></div>
+                <img class="infinity" src="../img/infinity.png" onclick="toggleAuto()">
+            </div>
+            <div>
+                <div id="work_dot" class="working"><div></div></div>
+                <img src="../img/worker.png">
+            </div>
+            <div>
+                <div id="rest_dot" class="resting hidden"><div></div></div>
+                <img src="../img/teacup.png">
+            </div>
+        </div>
+        <div class="timer">
+            <span id="min">25</span>
             <span>:</span>
             <span id="sec">00</span>
         </div>
