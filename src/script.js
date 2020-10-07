@@ -3,8 +3,8 @@ let status_play = false,
     transparent_pin = false,
     interval,
     infinity = false,
-    def_min = 1,
-    def_rest = 0,
+    def_min = 25,
+    def_rest = 5,
     def_sec = 00,
     min = def_min,
     sec = def_sec;
@@ -102,7 +102,7 @@ const workOrRest = () => {
         toggleDots();
     } else {
         min = def_rest;
-        sec = 10;
+        sec = def_sec;
         toggleDots();
     }
 }
