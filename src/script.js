@@ -14,7 +14,9 @@ let min_span = document.getElementById("min"),
     play_but = document.getElementById("play"),
     reload_but = document.getElementById("reload"),
     exit_but = document.getElementById("exit"),
-    eye_img = document.getElementById("eye");
+    eye_img = document.getElementById("eye"),
+    rest_end = new Audio('../sounds/rest_end.mp3'),
+    work_end = new Audio('../sounds/work_end.mp3');
 
 play_but.addEventListener("click", () => {
     controllerPlay();
@@ -85,6 +87,11 @@ const pause = () => {
 };
 
 const autoPlay = () => {
+    if(work) {
+        work_end.play();
+    } else {
+        rest_end.play();
+    }
     if (infinity) {
         pause();
         workOrRest();
