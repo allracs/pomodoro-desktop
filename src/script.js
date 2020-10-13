@@ -81,7 +81,6 @@ const play = () => {
 
 const pause = () => {
     play_but.lastChild.src = "../img/play.png";
-    console.log(play_but);
     status_play = false;
     clearInterval(interval);
 };
@@ -125,11 +124,9 @@ const toggleDots = () => {
 }
 
 const toggleAuto = () => {
-    console.log('toggleAuto');
     infinity = !infinity;
     let elem = document.getElementById('infinity_dot');
     if (infinity) {
-        console.log(infinity, elem);
         elem.classList.remove('hidden');
     } else {
         elem.classList.add('hidden');
